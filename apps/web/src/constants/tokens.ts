@@ -63,6 +63,13 @@ export const USDC_POLYGON_MUMBAI = new Token(
 )
 export const USDC_CELO = new Token(ChainId.CELO, '0xceba9300f2b948710d2653dd7b07f33a8b32118c', 6, 'USDC', 'USD Coin')
 export const USDC_BASE = new Token(ChainId.BASE, '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913', 6, 'USDC', 'USD Coin')
+export const USDC_INK_SEPOLIA = new Token(
+  ChainId.INK_SEPOLIA,
+  '0x2e0321399D7E50FCbF00c2a8F4e9d91BCbd0Fd25',
+  6,
+  'USDT',
+  'Tether USD'
+)
 
 export const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin')
 export const DAI_ARBITRUM_ONE = new Token(
@@ -352,6 +359,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
     'CELO',
     'Celo native asset'
   ),
+  [ChainId.INK_SEPOLIA]: new Token(
+    ChainId.INK_SEPOLIA,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'Wrapped Ether'
+  ),
   [ChainId.BNB]: new Token(ChainId.BNB, '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c', 18, 'WBNB', 'Wrapped BNB'),
   [ChainId.AVALANCHE]: new Token(
     ChainId.AVALANCHE,
@@ -514,6 +528,7 @@ const STABLECOINS: { [chainId in ChainId]: Token[] } = {
   [ChainId.BNB]: [USDC_BSC],
   [ChainId.BASE]: [USDC_BASE],
   [ChainId.CELO]: [USDC_CELO],
+  [ChainId.INK_SEPOLIA]: [USDC_INK_SEPOLIA],
   [ChainId.CELO_ALFAJORES]: [USDC_CELO],
   [ChainId.GOERLI]: [USDC_GOERLI],
   [ChainId.SEPOLIA]: [USDC_SEPOLIA],

@@ -27,6 +27,7 @@ const CHAIN_CONFIGS: { [key: number]: ChainConfig } = {
     weth: WETH_NOT_SUPPORTED_ON_CHAIN,
     creationBlock: 25670593,
   },
+  // TODO: consider adding ink sepolia
 }
 
 export const UNIVERSAL_ROUTER_ADDRESS = (chainId: number): string => {

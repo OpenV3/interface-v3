@@ -28,6 +28,8 @@ export const AVALANCHE_LIST =
   'https://raw.githubusercontent.com/ava-labs/avalanche-bridge-resources/main/token_list.json'
 export const BASE_LIST =
   'https://raw.githubusercontent.com/ethereum-optimism/ethereum-optimism.github.io/master/optimism.tokenlist.json'
+export const INK_SEPOLIA_LIST =
+  'https://gateway.pinata.cloud/ipfs/bafkreicl65fpk6ye6xs4tiuqezuzdp2cdrqpx4m476g3yvkmms6qwm2qcu'
 
 export const UNSUPPORTED_LIST_URLS: string[] = [BA_LIST /*, UNI_UNSUPPORTED_LIST*/]
 

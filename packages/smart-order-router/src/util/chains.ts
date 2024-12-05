@@ -65,6 +65,8 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
       return ChainId.CELO
     case 44787:
       return ChainId.CELO_ALFAJORES
+    case 763373:
+      return ChainId.INK_SEPOLIA
     case 100:
       return ChainId.GNOSIS
     case 1284:
@@ -265,6 +267,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
     18,
     'CELO',
     'Celo native asset'
+  ),
+  [ChainId.INK_SEPOLIA]: new Token(
+    ChainId.INK_SEPOLIA,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'Wrapped Ether'
   ),
 }
 

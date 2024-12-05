@@ -179,6 +179,7 @@ enum Chain {
   OPTIMISM
   POLYGON
   CELO
+  INK_SEPOLIA
   BNB
   BASE
   BLAST

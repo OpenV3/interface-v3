@@ -8,6 +8,7 @@ export const CHAIN_IDS_TO_NAMES = {
   [ChainId.POLYGON_MUMBAI]: 'polygon_mumbai',
   [ChainId.CELO]: 'celo',
   [ChainId.CELO_ALFAJORES]: 'celo_alfajores',
+  [ChainId.INK_SEPOLIA]: 'ink_sepolia',
   [ChainId.ARBITRUM_ONE]: 'arbitrum',
   [ChainId.ARBITRUM_GOERLI]: 'arbitrum_goerli',
   [ChainId.OPTIMISM]: 'optimism',

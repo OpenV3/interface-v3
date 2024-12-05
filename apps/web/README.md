@@ -19,5 +19,6 @@ yarn g:typecheck
 
 ```bash
 yarn
-yarn web start
+yarn start
+# investigate if the following cmd works from the root: yarn web start
 ```

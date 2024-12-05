@@ -12,6 +12,7 @@ const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
   [ChainId.POLYGON_MUMBAI]: 'https://mumbai.polygonscan.com',
   [ChainId.CELO]: 'https://celoscan.io',
   [ChainId.CELO_ALFAJORES]: 'https://alfajores-blockscout.celo-testnet.org',
+  [ChainId.INK_SEPOLIA]: 'https://explorer-sepolia.inkonchain.com',
   [ChainId.BNB]: 'https://bscscan.com',
   [ChainId.AVALANCHE]: 'https://snowtrace.io',
   [ChainId.BASE]: 'https://basescan.org',

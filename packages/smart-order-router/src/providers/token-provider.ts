@@ -335,6 +335,15 @@ export const USDC_BNB = new Token(ChainId.BNB, '0x8AC76a51cc950d9822D68b83fE1Ad9
 
 export const USDT_BNB = new Token(ChainId.BNB, '0x55d398326f99059fF775485246999027B3197955', 18, 'USDT', 'USDT')
 
+// Ink sepolia Tokens
+export const WETH_INK_SEPOLIA = new Token(
+  ChainId.INK_SEPOLIA,
+  '0x4200000000000000000000000000000000000006',
+  18,
+  'WETH',
+  'Wrapped Ether'
+)
+
 // Celo Tokens
 export const CELO = new Token(
   ChainId.CELO,

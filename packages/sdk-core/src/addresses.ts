@@ -69,9 +69,23 @@ const CELO_ADDRESSES: ChainAddresses = {
   mixedRouteQuoterV1Address: '0x1f34a843832044A085bB9cAe48cc7294D5478FAA',
 }
 
+// ink sepolia addresses
+const INK_SEPOLIA_ADDRESSES: ChainAddresses = {
+  v3CoreFactoryAddress: '0xcfEA11557Bc9cB71bc6916e09fC8493D668b8d53',
+  multicallAddress: '0x6aAD667f0f897F9f9a3E2a82618483f7FE53524E',
+  quoterAddress: '0xfA196A6c9137B320E8801252E3020f25aEe5C234',
+  v3MigratorAddress: '0x05043eE22e5E64677D42A632D42a5cb15187947B',
+  nonfungiblePositionManagerAddress: '0x34513e8A327987Bb44acF5A925a7f3b4092d8b5F',
+  tickLensAddress: '0xD398090ba2Fc528c3D6aEB17EA49038bFCbedD4A',
+  // TODO for Mo
+  swapRouter02Address: '',
+  mixedRouteQuoterV1Address: '',
+}
+
 export const CHAIN_TO_ADDRESSES_MAP: Record<SupportedChainsType, ChainAddresses> = {
   [ChainId.CELO]: CELO_ADDRESSES,
   [ChainId.CELO_ALFAJORES]: CELO_ADDRESSES,
+  [ChainId.INK_SEPOLIA]: INK_SEPOLIA_ADDRESSES,
 }
 
 /* V3 Contract Addresses */

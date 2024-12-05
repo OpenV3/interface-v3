@@ -7,6 +7,8 @@ const CHAIN_SUBGRAPH_URL: Record<number, string> = {
   [ChainId.MAINNET]: 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3?source=uniswap',
   [ChainId.CELO]:
     'https://gateway-arbitrum.network.thegraph.com/api/4271ef6e8196c6631ad397c7be19082a/subgraphs/id/HsmR9eEf8v77bGBgpHMNbLh36Z1kkeMc654YWDepNcNf',
+  [ChainId.INK_SEPOLIA]:
+    'https://api.goldsky.com/api/public/project_clwg93ryvd0mi01u59udc0ypo/subgraphs/open-v3/1.0.0/gn',
 }
 
 const httpLink = new HttpLink({ uri: CHAIN_SUBGRAPH_URL[ChainId.CELO] })
@@ -37,5 +39,9 @@ export const chainToApolloClient: Record<number, ApolloClient<NormalizedCacheObj
   [ChainId.CELO]: new ApolloClient({
     cache: new InMemoryCache(),
     uri: CHAIN_SUBGRAPH_URL[ChainId.CELO],
+  }),
+  [ChainId.INK_SEPOLIA]: new ApolloClient({
+    cache: new InMemoryCache(),
+    uri: CHAIN_SUBGRAPH_URL[ChainId.INK_SEPOLIA],
   }),
 }
