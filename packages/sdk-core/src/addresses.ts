@@ -77,9 +77,8 @@ const INK_SEPOLIA_ADDRESSES: ChainAddresses = {
   v3MigratorAddress: '0x05043eE22e5E64677D42A632D42a5cb15187947B',
   nonfungiblePositionManagerAddress: '0x34513e8A327987Bb44acF5A925a7f3b4092d8b5F',
   tickLensAddress: '0xD398090ba2Fc528c3D6aEB17EA49038bFCbedD4A',
-  // TODO for Mo
-  swapRouter02Address: '',
-  mixedRouteQuoterV1Address: '',
+  swapRouter02Address: '0x48E2633a55E3B007fa2C3fD9FCC8120c4b54693F',
+  mixedRouteQuoterV1Address: '0x238394541dE407Fd494e455eF17C9D991F4FBEd8',
 }
 
 export const CHAIN_TO_ADDRESSES_MAP: Record<SupportedChainsType, ChainAddresses> = {
