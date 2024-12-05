@@ -344,6 +344,14 @@ export const WETH_INK_SEPOLIA = new Token(
   'Wrapped Ether'
 )
 
+export const USDT_INK_SEPOLIA = new Token(
+  ChainId.INK_SEPOLIA,
+  '0x2e0321399D7E50FCbF00c2a8F4e9d91BCbd0Fd25',
+  6,
+  'USDT',
+  'USDT Stablecoin'
+)
+
 // Celo Tokens
 export const CELO = new Token(
   ChainId.CELO,

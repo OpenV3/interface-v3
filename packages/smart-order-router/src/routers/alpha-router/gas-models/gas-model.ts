@@ -31,6 +31,7 @@ import {
   USDT_ARBITRUM,
   USDT_BNB,
   USDT_GOERLI,
+  USDT_INK_SEPOLIA,
   USDT_MAINNET,
   USDT_OPTIMISM,
   USDT_OPTIMISM_GOERLI,
@@ -66,6 +67,7 @@ export const usdGasTokensByChain: { [chainId in ChainId]?: Token[] } = {
   [ChainId.BNB]: [USDT_BNB, USDC_BNB, DAI_BNB],
   [ChainId.AVALANCHE]: [DAI_AVAX, USDC_AVAX],
   [ChainId.BASE]: [USDC_BASE],
+  [ChainId.INK_SEPOLIA]: [USDT_INK_SEPOLIA],
 }
 
 export type L1ToL2GasCosts = {
