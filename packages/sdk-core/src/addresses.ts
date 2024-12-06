@@ -13,7 +13,7 @@ type ChainAddresses = {
   mixedRouteQuoterV1Address?: string
 }
 
-const DEFAULT_NETWORKS = [ChainId.CELO, ChainId.CELO_ALFAJORES]
+const DEFAULT_NETWORKS = [ChainId.CELO, ChainId.CELO_ALFAJORES, ChainId.INK_SEPOLIA]
 
 function constructSameAddressMap(address: string, additionalNetworks: ChainId[] = []): AddressMap {
   return DEFAULT_NETWORKS.concat(additionalNetworks).reduce<AddressMap>((memo, chainId) => {

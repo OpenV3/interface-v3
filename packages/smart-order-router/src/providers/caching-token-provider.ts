@@ -5,6 +5,7 @@ import { log, WRAPPED_NATIVE_CURRENCY } from '../util'
 
 import { ICache } from './cache'
 import {
+  // TODO for Mo: import INK tokens?
   BTC_BNB,
   BUSD_BNB,
   CELO,

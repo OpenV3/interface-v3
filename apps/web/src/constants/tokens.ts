@@ -63,10 +63,11 @@ export const USDC_POLYGON_MUMBAI = new Token(
 )
 export const USDC_CELO = new Token(ChainId.CELO, '0xceba9300f2b948710d2653dd7b07f33a8b32118c', 6, 'USDC', 'USD Coin')
 export const USDC_BASE = new Token(ChainId.BASE, '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913', 6, 'USDC', 'USD Coin')
-export const USDC_INK_SEPOLIA = new Token(
+
+export const USDT_INK_SEPOLIA = new Token(
   ChainId.INK_SEPOLIA,
   '0x2e0321399D7E50FCbF00c2a8F4e9d91BCbd0Fd25',
-  6,
+  18,
   'USDT',
   'Tether USD'
 )
@@ -528,7 +529,7 @@ const STABLECOINS: { [chainId in ChainId]: Token[] } = {
   [ChainId.BNB]: [USDC_BSC],
   [ChainId.BASE]: [USDC_BASE],
   [ChainId.CELO]: [USDC_CELO],
-  [ChainId.INK_SEPOLIA]: [USDC_INK_SEPOLIA],
+  [ChainId.INK_SEPOLIA]: [USDT_INK_SEPOLIA],
   [ChainId.CELO_ALFAJORES]: [USDC_CELO],
   [ChainId.GOERLI]: [USDC_GOERLI],
   [ChainId.SEPOLIA]: [USDC_SEPOLIA],

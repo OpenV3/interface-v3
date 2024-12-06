@@ -7,6 +7,7 @@ import EthereumLogo from '../../assets/images/ethereum-logo.png'
 import AvaxLogo from '../../assets/svg/avax_logo.svg'
 import BnbLogo from '../../assets/svg/bnb-logo.svg'
 import CeloLogo from '../../assets/svg/celo_logo.svg'
+// TODO for Mo: import INK logo
 import MaticLogo from '../../assets/svg/matic-token-icon.svg'
 import { NATIVE_CHAIN_ID, isCelo, nativeOnChain } from '../../constants/tokens'
 

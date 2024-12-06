@@ -8,6 +8,7 @@ import pMemoize from 'utils/promiseMemoize'
 const EVENT_FETCH_RPC_URLS = {
   [ChainId.CELO]: ['https://celo-mainnet.infura.io/v3/801f4c55ea6b48b4b629c9645964eaa9', 'https://rpc.ankr.com/celo'],
   [ChainId.CELO_ALFAJORES]: [''],
+  // TODO for Mo: add RPC URLs for INK chains?
 }
 
 async function eventFetcher<T>(

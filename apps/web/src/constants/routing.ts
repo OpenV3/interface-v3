@@ -34,6 +34,7 @@ import {
   USDT_AVALANCHE,
   USDT_BSC,
   USDT_CELO,
+  USDT_INK_SEPOLIA,
   USDT_OPTIMISM,
   USDT_POLYGON,
   WBTC,
@@ -126,6 +127,11 @@ export const COMMON_BASES: ChainCurrencyList = {
     UBE[ChainId.CELO_ALFAJORES],
     CUSD_CELO_ALFAJORES,
     CEUR_CELO_ALFAJORES,
+  ],
+
+  [ChainId.INK_SEPOLIA]: [
+    nativeOnChain(ChainId.INK_SEPOLIA),
+    USDT_INK_SEPOLIA,
   ],
 
   [ChainId.BNB]: [nativeOnChain(ChainId.BNB), DAI_BSC, USDC_BSC, USDT_BSC, ETH_BSC, BTC_BSC, BUSD_BSC],
