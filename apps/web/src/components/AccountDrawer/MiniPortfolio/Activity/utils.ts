@@ -9,7 +9,8 @@ import { Permit2 } from 'uniswap/src/abis/types'
 import { TransactionStatus } from 'uniswap/src/data/graphql/uniswap-data-api/__generated__/types-and-hooks'
 import { didUserReject } from 'utils/swapErrorToUserReadableMessage'
 
-import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
+// import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
+import { PERMIT2_ADDRESS } from '@uniswap/universal-router-sdk'
 import { BigNumber, ContractTransaction } from 'ethers/lib/ethers'
 import { useContract } from 'hooks/useContract'
 import { useCallback } from 'react'
@@ -188,7 +189,7 @@ export function useCreateCancelTransactionRequest(
       }
     | undefined
 ): TransactionRequest | undefined {
-  const permit2 = useContract<Permit2>(PERMIT2_ADDRESS, PERMIT2_ABI, true)
+  const permit2 = useContract<Permit2>(PERMIT2_ADDRESS(params?.chainId), PERMIT2_ABI, true)
   const transactionFetcher = useCallback(() => {
     if (
       !params ||

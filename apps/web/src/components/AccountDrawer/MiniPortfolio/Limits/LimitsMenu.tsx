@@ -1,4 +1,5 @@
-import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
+// import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
+import { PERMIT2_ADDRESS } from '@uniswap/universal-router-sdk'
 import { useWeb3React } from '@web3-react/core'
 import { sendAnalyticsEvent } from 'analytics'
 import {
@@ -39,7 +40,7 @@ const StyledLimitsDisclaimer = styled(LimitDisclaimer)`
 
 function useCancelMultipleOrders(orders?: UniswapXOrderDetails[]): () => Promise<ContractTransaction[] | undefined> {
   const { provider } = useWeb3React()
-  const permit2 = useContract<Permit2>(PERMIT2_ADDRESS, PERMIT2_ABI, true)
+  const permit2 = useContract<Permit2>(PERMIT2_ADDRESS(provider?.network?.chainId), PERMIT2_ABI, true)
   return useCallback(async () => {
     if (!orders || orders.length === 0) return undefined
 

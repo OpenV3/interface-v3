@@ -1,5 +1,6 @@
 import { ChainId, Currency } from '@ubeswap/sdk-core'
-import { MaxUint256, PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
+import { MaxUint256 } from '@uniswap/permit2-sdk'
+import { PERMIT2_ADDRESS } from '@uniswap/universal-router-sdk'
 import { SupportedInterfaceChain } from 'constants/chains'
 import { RPC_PROVIDERS } from 'constants/providers'
 import { WRAPPED_NATIVE_CURRENCY } from 'constants/tokens'
@@ -26,18 +27,20 @@ export async function getApproveInfo(
   // If any of these arguments aren't provided, then we cannot generate approval cost info
   if (!account || !usdCostPerGas) return { needsApprove: false }
 
+  const chainId = currency.chainId
+
   // routing-api under estimates gas for Arbitrum swaps so it inflates cost per gas by a lot
   // so disable showing approves for Arbitrum until routing-api gives more accurate gas estimates
-  if (currency.chainId === ChainId.ARBITRUM_ONE || currency.chainId === ChainId.ARBITRUM_GOERLI) {
+  if (chainId === ChainId.ARBITRUM_ONE || chainId === ChainId.ARBITRUM_GOERLI) {
     return { needsApprove: false }
   }
 
-  const provider = RPC_PROVIDERS[currency.chainId as SupportedInterfaceChain]
+  const provider = RPC_PROVIDERS[chainId as SupportedInterfaceChain]
   const tokenContract = getContract(currency.address, ERC20_ABI, provider) as Erc20
 
   let approveGasUseEstimate
   try {
-    const allowance = await tokenContract.callStatic.allowance(account, PERMIT2_ADDRESS)
+    const allowance = await tokenContract.callStatic.allowance(account, PERMIT2_ADDRESS(chainId))
     if (!allowance.lt(amount)) return { needsApprove: false }
   } catch (_) {
     // If contract lookup fails (eg if Infura goes down), then don't show gas info for approving the token
@@ -45,7 +48,7 @@ export async function getApproveInfo(
   }
 
   try {
-    const approveTx = await tokenContract.populateTransaction.approve(PERMIT2_ADDRESS, MaxUint256)
+    const approveTx = await tokenContract.populateTransaction.approve(PERMIT2_ADDRESS(chainId), MaxUint256)
     approveGasUseEstimate = (await provider.estimateGas({ from: account, ...approveTx })).toNumber()
   } catch (_) {
     // estimateGas will error if the account doesn't have sufficient token balance, but we should show an estimated cost anyway

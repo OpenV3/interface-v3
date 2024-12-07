@@ -129,10 +129,7 @@ export const COMMON_BASES: ChainCurrencyList = {
     CEUR_CELO_ALFAJORES,
   ],
 
-  [ChainId.INK_SEPOLIA]: [
-    nativeOnChain(ChainId.INK_SEPOLIA),
-    USDT_INK_SEPOLIA,
-  ],
+  [ChainId.INK_SEPOLIA]: [nativeOnChain(ChainId.INK_SEPOLIA), USDT_INK_SEPOLIA],
 
   [ChainId.BNB]: [nativeOnChain(ChainId.BNB), DAI_BSC, USDC_BSC, USDT_BSC, ETH_BSC, BTC_BSC, BUSD_BSC],
 

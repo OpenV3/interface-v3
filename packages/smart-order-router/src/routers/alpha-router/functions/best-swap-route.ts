@@ -1,5 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { ChainId, TradeType } from '@ubeswap/sdk-core'
+import { ChainId, Token, TradeType } from '@ubeswap/sdk-core'
 import { Protocol } from '@uniswap/router-sdk'
 import JSBI from 'jsbi'
 import _ from 'lodash'
@@ -411,23 +411,33 @@ export async function getBestSwapRouteBy(
 
   const { gasCostL1USD, gasCostL1QuoteToken } = gasCostsL1ToL2
 
+  // Helper function to safely handle decimal normalization
+  function normalizeGasCost(gasCost: CurrencyAmount, usdToken: Token, usdTokenDecimals: number): CurrencyAmount {
+    const decimalsDiff = usdTokenDecimals - gasCost.currency.decimals
+
+    // If no adjustment needed
+    if (decimalsDiff === 0) {
+      return CurrencyAmount.fromRawAmount(usdToken, gasCost.quotient)
+    }
+
+    if (decimalsDiff > 0) {
+      // If USD token has more decimals, multiply
+      return CurrencyAmount.fromRawAmount(
+        usdToken,
+        JSBI.multiply(gasCost.quotient, JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(decimalsDiff)))
+      )
+    } else {
+      // If gas token has more decimals, divide (round down)
+      const divisor = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(Math.abs(decimalsDiff)))
+
+      return CurrencyAmount.fromRawAmount(usdToken, JSBI.divide(gasCost.quotient, divisor))
+    }
+  }
+
   // For each gas estimate, normalize decimals to that of the chosen usd token.
   const estimatedGasUsedUSDs = _(bestSwap)
     .map((routeWithValidQuote) => {
-      // TODO: will error if gasToken has decimals greater than usdToken
-      const decimalsDiff = usdTokenDecimals - routeWithValidQuote.gasCostInUSD.currency.decimals
-
-      if (decimalsDiff == 0) {
-        return CurrencyAmount.fromRawAmount(usdToken, routeWithValidQuote.gasCostInUSD.quotient)
-      }
-
-      return CurrencyAmount.fromRawAmount(
-        usdToken,
-        JSBI.multiply(
-          routeWithValidQuote.gasCostInUSD.quotient,
-          JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(decimalsDiff))
-        )
-      )
+      return normalizeGasCost(routeWithValidQuote.gasCostInUSD, usdToken, usdTokenDecimals)
     })
     .value()
 

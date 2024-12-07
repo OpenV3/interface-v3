@@ -5,7 +5,6 @@ import { log, WRAPPED_NATIVE_CURRENCY } from '../util'
 
 import { ICache } from './cache'
 import {
-  // TODO for Mo: import INK tokens?
   BTC_BNB,
   BUSD_BNB,
   CELO,
@@ -40,6 +39,7 @@ import {
   USDC_SEPOLIA,
   USDT_ARBITRUM,
   USDT_BNB,
+  USDT_INK_SEPOLIA,
   USDT_MAINNET,
   USDT_OPTIMISM,
   USDT_OPTIMISM_GOERLI,
@@ -110,6 +110,10 @@ export const CACHE_SEED_TOKENS: {
     CUSD: CUSD_CELO_ALFAJORES,
     CEUR: CUSD_CELO_ALFAJORES,
     DAI: DAI_CELO_ALFAJORES,
+  },
+  [ChainId.INK_SEPOLIA]: {
+    WETH: WRAPPED_NATIVE_CURRENCY[ChainId.INK_SEPOLIA]!,
+    USDT: USDT_INK_SEPOLIA,
   },
   [ChainId.GNOSIS]: {
     WXDAI: WRAPPED_NATIVE_CURRENCY[ChainId.GNOSIS],

@@ -26,7 +26,9 @@ import { Divider, ThemedText } from 'theme/components'
 import { UniswapXOrderStatus } from 'types/uniswapx'
 import { ExplorerDataType, getExplorerLink } from 'utils/getExplorerLink'
 
-import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
+// TODO for Mo: investigate if Permit2 can be deployed to same address on ink-sepolia
+// import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
+import { PERMIT2_ADDRESS } from '@uniswap/universal-router-sdk'
 import { sendAnalyticsEvent } from 'analytics'
 import { cancelMultipleUniswapXOrders } from 'components/AccountDrawer/MiniPortfolio/Activity/utils'
 import AlertTriangleFilled from 'components/Icons/AlertTriangleFilled'
@@ -162,7 +164,7 @@ function getOrderTitle(order: UniswapXOrderDetails): ReactNode {
 
 function useCancelOrder(order?: UniswapXOrderDetails): () => Promise<ContractTransaction[] | undefined> {
   const { provider } = useWeb3React()
-  const permit2 = useContract<Permit2>(PERMIT2_ADDRESS, PERMIT2_ABI, true)
+  const permit2 = useContract<Permit2>(PERMIT2_ADDRESS(provider?.network?.chainId), PERMIT2_ABI, true)
   return useCallback(async () => {
     if (!order) return undefined
     return await cancelMultipleUniswapXOrders({

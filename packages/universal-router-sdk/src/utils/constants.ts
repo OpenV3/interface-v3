@@ -1,12 +1,15 @@
+import { ChainId } from '@ubeswap/sdk-core'
 import { BigNumber } from 'ethers'
 
 type ChainConfig = {
-  router: string
+  router: string // the universal router
   creationBlock: number
   weth: string
 }
 
 const WETH_NOT_SUPPORTED_ON_CHAIN = '0x0000000000000000000000000000000000000000'
+
+const STANDARD_WRAPPED_NATIVE = '0x4200000000000000000000000000000000000006'
 
 const CHAIN_CONFIGS: { [key: number]: ChainConfig } = {
   // mainnet
@@ -27,7 +30,12 @@ const CHAIN_CONFIGS: { [key: number]: ChainConfig } = {
     weth: WETH_NOT_SUPPORTED_ON_CHAIN,
     creationBlock: 25670593,
   },
-  // TODO: consider adding ink sepolia
+  // ink sepolia
+  [763373]: {
+    router: '0xF8123977EbC310cB0B2f8B8E54F9feCEa5489A92',
+    weth: STANDARD_WRAPPED_NATIVE,
+    creationBlock: 4487208,
+  },
 }
 
 export const UNIVERSAL_ROUTER_ADDRESS = (chainId: number): string => {
@@ -49,7 +57,13 @@ export const WETH_ADDRESS = (chainId: number): string => {
   return CHAIN_CONFIGS[chainId]!.weth
 }
 
-export const PERMIT2_ADDRESS = '0x000000000022D473030F116dDEE9F6B43aC78BA3'
+export const PERMIT2_ADDRESS = (chainId: number | undefined) => {
+  if (chainId === ChainId.INK_SEPOLIA) {
+    return '0xE3709aB08457c8eDb0c0ee4c4F9193B39efC0769'
+  }
+  // use official Uniswap deployed as default
+  return '0x000000000022D473030F116dDEE9F6B43aC78BA3'
+}
 
 export const CONTRACT_BALANCE = BigNumber.from(2).pow(255)
 export const ETH_ADDRESS = '0x0000000000000000000000000000000000000000'

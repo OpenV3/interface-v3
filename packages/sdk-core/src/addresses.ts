@@ -193,7 +193,9 @@ export const SWAP_ROUTER_02_ADDRESSES = (chainId: number) => {
 }
 
 export const UNIVERSAL_ROUTER_ADDRESS = (chainId: number) => {
-  if (SUPPORTED_CHAINS.includes(chainId)) {
+  if (chainId === ChainId.INK_SEPOLIA) {
+    return '0xF8123977EbC310cB0B2f8B8E54F9feCEa5489A92'
+  } else if (SUPPORTED_CHAINS.includes(chainId)) {
     return '0x3C255DED9B25f0BFB4EF1D14234BD2514d7A7A0d'
   }
   return ''
