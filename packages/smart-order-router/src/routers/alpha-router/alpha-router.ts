@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { BaseProvider, JsonRpcProvider } from '@ethersproject/providers'
-import DEFAULT_TOKEN_LIST from '@ubeswap/default-token-list'
+// import DEFAULT_TOKEN_LIST from '@ubeswap/default-token-list'
 import { ChainId, Currency, Fraction, Token, TradeType } from '@ubeswap/sdk-core'
 import { Protocol, SwapRouter, Trade, ZERO } from '@uniswap/router-sdk'
 import { TokenList } from '@uniswap/token-lists'
@@ -9,6 +9,8 @@ import retry from 'async-retry'
 import JSBI from 'jsbi'
 import _ from 'lodash'
 import NodeCache from 'node-cache'
+// TODO: temp used instead of @ubeswap/default-token-list
+import DEFAULT_TOKEN_LIST from '../../default-token-list.json'
 
 import {
   CacheMode,
@@ -517,6 +519,7 @@ export class AlphaRouter implements IRouter<AlphaRouterConfig>, ISwapToRatio<Alp
             }
           )
           break
+        case ChainId.INK_SEPOLIA: // INK_SEPOLIA should be similar to arbitrum
         case ChainId.ARBITRUM_ONE:
         case ChainId.ARBITRUM_GOERLI:
           this.onChainQuoteProvider = new OnChainQuoteProvider(

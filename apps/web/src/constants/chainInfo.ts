@@ -3,7 +3,15 @@ import ms from 'ms'
 import { darkTheme } from 'theme/colors'
 
 import { SupportedL1ChainId, SupportedL2ChainId } from './chains'
-import { ARBITRUM_LIST, AVALANCHE_LIST, BASE_LIST, CELO_LIST, OPTIMISM_LIST, PLASMA_BNB_LIST } from './lists'
+import {
+  ARBITRUM_LIST,
+  AVALANCHE_LIST,
+  BASE_LIST,
+  CELO_LIST,
+  INK_SEPOLIA_LIST,
+  OPTIMISM_LIST,
+  PLASMA_BNB_LIST,
+} from './lists'
 
 export const AVERAGE_L1_BLOCK_TIME = ms(`12s`)
 export const DEFAULT_MS_BEFORE_WARNING = ms(`10m`)
@@ -32,6 +40,8 @@ export function getBlocksPerMainnetEpochForChainId(chainId: number | undefined):
       return 6
     case ChainId.CELO:
       return 2
+    case ChainId.INK_SEPOLIA:
+      return 6
     default:
       return 1
   }
@@ -202,6 +212,19 @@ const CHAIN_INFO: ChainInfoMap = {
     label: 'Celo Alfajores',
     nativeCurrency: { name: 'Celo', symbol: 'CELO', decimals: 18 },
     defaultListUrl: CELO_LIST,
+  },
+  [ChainId.INK_SEPOLIA]: {
+    networkType: NetworkType.L2,
+    blockWaitMsBeforeWarning: ms(`10m`),
+    bridge: 'http://bridge-gel-sepolia.inkonchain.com/',
+    defaultListUrl: INK_SEPOLIA_LIST,
+    docs: 'https://docs.inkonchain.com',
+    explorer: 'https://explorer-sepolia.inkonchain.com/',
+    infoLink: '', // TODO for Mo
+    label: 'Ink Sepolia',
+    statusPage: '', // TODO for Mo
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+    color: darkTheme.chain_84531,
   },
   [ChainId.BNB]: {
     networkType: NetworkType.L1,

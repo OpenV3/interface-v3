@@ -22,6 +22,7 @@ import {
   USDC_POLYGON,
   USDT_MAINNET,
   WBTC_MAINNET,
+  WETH_INK_SEPOLIA,
   WETH_POLYGON,
   WMATIC_POLYGON,
 } from '../token-provider'
@@ -45,6 +46,7 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.POLYGON_MUMBAI]: [],
   [ChainId.CELO]: [CELO, CUSD_CELO, CEUR_CELO, DAI_CELO],
   [ChainId.CELO_ALFAJORES]: [CELO_ALFAJORES, CUSD_CELO_ALFAJORES, CEUR_CELO_ALFAJORES, DAI_CELO_ALFAJORES],
+  [ChainId.INK_SEPOLIA]: [WETH_INK_SEPOLIA], // TODO: consider adding a USD asset
   [ChainId.GNOSIS]: [],
   [ChainId.BNB]: [],
   [ChainId.AVALANCHE]: [],

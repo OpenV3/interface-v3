@@ -18,13 +18,14 @@ export enum ChainId {
   AVALANCHE = 43114,
   BASE_GOERLI = 84531,
   BASE = 8453,
+  INK_SEPOLIA = 763373,
   ZORA = 7777777,
   ZORA_SEPOLIA = 999999999,
   ROOTSTOCK = 30,
   BLAST = 81457,
 }
 
-export const SUPPORTED_CHAINS = [ChainId.CELO_ALFAJORES, ChainId.CELO] as const
+export const SUPPORTED_CHAINS = [ChainId.CELO_ALFAJORES, ChainId.CELO, ChainId.INK_SEPOLIA] as const
 export type SupportedChainsType = (typeof SUPPORTED_CHAINS)[number]
 
 export enum NativeCurrencyName {

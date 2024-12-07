@@ -13,7 +13,7 @@ type ChainAddresses = {
   mixedRouteQuoterV1Address?: string
 }
 
-const DEFAULT_NETWORKS = [ChainId.CELO, ChainId.CELO_ALFAJORES]
+const DEFAULT_NETWORKS = [ChainId.CELO, ChainId.CELO_ALFAJORES, ChainId.INK_SEPOLIA]
 
 function constructSameAddressMap(address: string, additionalNetworks: ChainId[] = []): AddressMap {
   return DEFAULT_NETWORKS.concat(additionalNetworks).reduce<AddressMap>((memo, chainId) => {
@@ -69,9 +69,22 @@ const CELO_ADDRESSES: ChainAddresses = {
   mixedRouteQuoterV1Address: '0x1f34a843832044A085bB9cAe48cc7294D5478FAA',
 }
 
+// ink sepolia addresses
+const INK_SEPOLIA_ADDRESSES: ChainAddresses = {
+  v3CoreFactoryAddress: '0xcfEA11557Bc9cB71bc6916e09fC8493D668b8d53',
+  multicallAddress: '0x6aAD667f0f897F9f9a3E2a82618483f7FE53524E',
+  quoterAddress: '0xfA196A6c9137B320E8801252E3020f25aEe5C234',
+  v3MigratorAddress: '0x05043eE22e5E64677D42A632D42a5cb15187947B',
+  nonfungiblePositionManagerAddress: '0x34513e8A327987Bb44acF5A925a7f3b4092d8b5F',
+  tickLensAddress: '0xD398090ba2Fc528c3D6aEB17EA49038bFCbedD4A',
+  swapRouter02Address: '0x48E2633a55E3B007fa2C3fD9FCC8120c4b54693F',
+  mixedRouteQuoterV1Address: '0x238394541dE407Fd494e455eF17C9D991F4FBEd8',
+}
+
 export const CHAIN_TO_ADDRESSES_MAP: Record<SupportedChainsType, ChainAddresses> = {
   [ChainId.CELO]: CELO_ADDRESSES,
   [ChainId.CELO_ALFAJORES]: CELO_ADDRESSES,
+  [ChainId.INK_SEPOLIA]: INK_SEPOLIA_ADDRESSES,
 }
 
 /* V3 Contract Addresses */
@@ -180,7 +193,9 @@ export const SWAP_ROUTER_02_ADDRESSES = (chainId: number) => {
 }
 
 export const UNIVERSAL_ROUTER_ADDRESS = (chainId: number) => {
-  if (SUPPORTED_CHAINS.includes(chainId)) {
+  if (chainId === ChainId.INK_SEPOLIA) {
+    return '0xF8123977EbC310cB0B2f8B8E54F9feCEa5489A92'
+  } else if (SUPPORTED_CHAINS.includes(chainId)) {
     return '0x3C255DED9B25f0BFB4EF1D14234BD2514d7A7A0d'
   }
   return ''

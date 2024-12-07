@@ -74,6 +74,7 @@ const GQL_MAINNET_CHAINS = [
   Chain.Ethereum,
   Chain.Polygon,
   Chain.Celo,
+  Chain.InkSepolia,
   Chain.Optimism,
   Chain.Arbitrum,
   Chain.Bnb,
@@ -83,6 +84,7 @@ const GQL_MAINNET_CHAINS = [
 ] as const
 
 /** Used for making graphql queries to all chains supported by the graphql backend. Must be mutable for some apollo typechecking. */
+// TODO for Mo
 export const GQL_MAINNET_CHAINS_MUTABLE = [Chain.Celo]
 
 const GQL_TESTNET_CHAINS = [Chain.EthereumGoerli, Chain.EthereumSepolia] as const
@@ -98,6 +100,7 @@ export const CHAIN_ID_TO_BACKEND_NAME: { [key: number]: InterfaceGqlChain } = {
   [ChainId.POLYGON_MUMBAI]: Chain.Polygon,
   [ChainId.CELO]: Chain.Celo,
   [ChainId.CELO_ALFAJORES]: Chain.Celo,
+  [ChainId.INK_SEPOLIA]: Chain.InkSepolia, // TODO for Mo
   [ChainId.ARBITRUM_ONE]: Chain.Arbitrum,
   [ChainId.ARBITRUM_GOERLI]: Chain.Arbitrum,
   [ChainId.OPTIMISM]: Chain.Optimism,
@@ -189,6 +192,7 @@ const CHAIN_NAME_TO_CHAIN_ID: { [key in InterfaceGqlChain]: ChainId } = {
   [Chain.EthereumSepolia]: ChainId.SEPOLIA,
   [Chain.Polygon]: ChainId.POLYGON,
   [Chain.Celo]: ChainId.CELO,
+  [Chain.InkSepolia]: ChainId.INK_SEPOLIA, // TODO for Mo
   [Chain.Optimism]: ChainId.OPTIMISM,
   [Chain.Arbitrum]: ChainId.ARBITRUM_ONE,
   [Chain.Bnb]: ChainId.BNB,
@@ -235,6 +239,7 @@ export const BACKEND_SUPPORTED_CHAINS = [
 ] as const
 export const BACKEND_NOT_YET_SUPPORTED_CHAIN_IDS = [ChainId.AVALANCHE] as const
 
+// TODO for Mo
 export function isBackendSupportedChain(chain: Chain): chain is InterfaceGqlChain {
   return (BACKEND_SUPPORTED_CHAINS as ReadonlyArray<Chain>).includes(chain)
 }

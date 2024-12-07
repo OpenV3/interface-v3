@@ -51,7 +51,7 @@ function mockSwapInfo(
 const mockAccount1 = '0x000000000000000000000000000000000000000001'
 const mockAccount2 = '0x000000000000000000000000000000000000000002'
 const mockChainId = ChainId.MAINNET
-const mockSpenderAddress = PERMIT2_ADDRESS[mockChainId]
+const mockSpenderAddress = PERMIT2_ADDRESS(mockChainId)
 const mockCurrencyAmountRaw = '1000000000000000000'
 const mockCurrencyAmountRawUSDC = '1000000'
 const mockApprovalAmountRaw = '10000000'

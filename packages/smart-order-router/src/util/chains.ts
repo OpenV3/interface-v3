@@ -16,6 +16,7 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.BNB,
   ChainId.AVALANCHE,
   ChainId.BASE,
+  ChainId.INK_SEPOLIA,
   // Gnosis and Moonbeam don't yet have contracts deployed yet
 ]
 
@@ -65,6 +66,8 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
       return ChainId.CELO
     case 44787:
       return ChainId.CELO_ALFAJORES
+    case 763373:
+      return ChainId.INK_SEPOLIA
     case 100:
       return ChainId.GNOSIS
     case 1284:
@@ -98,6 +101,7 @@ export enum ChainName {
   AVALANCHE = 'avalanche-mainnet',
   BASE = 'base-mainnet',
   BASE_GOERLI = 'base-goerli',
+  INK_SEPOLIA = 'ink-sepolia',
 }
 
 export enum NativeCurrencyName {
@@ -128,6 +132,7 @@ export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
   [ChainId.BNB]: ['BNB', 'BNB', '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'],
   [ChainId.AVALANCHE]: ['AVAX', 'AVALANCHE', '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'],
   [ChainId.BASE]: ['ETH', 'ETHER', '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'],
+  [ChainId.INK_SEPOLIA]: ['ETH', 'ETHER', '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'],
 }
 
 export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
@@ -147,6 +152,7 @@ export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
   [ChainId.BNB]: NativeCurrencyName.BNB,
   [ChainId.AVALANCHE]: NativeCurrencyName.AVALANCHE,
   [ChainId.BASE]: NativeCurrencyName.ETHER,
+  [ChainId.INK_SEPOLIA]: NativeCurrencyName.ETHER,
 }
 
 export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
@@ -185,6 +191,8 @@ export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
       return ChainName.BASE
     case 84531:
       return ChainName.BASE_GOERLI
+    case 763373:
+      return ChainName.INK_SEPOLIA
     default:
       throw new Error(`Unknown chain id: ${id}`)
   }
@@ -222,6 +230,8 @@ export const ID_TO_PROVIDER = (id: ChainId): string => {
       return process.env.JSON_RPC_PROVIDER_AVALANCHE!
     case ChainId.BASE:
       return process.env.JSON_RPC_PROVIDER_BASE!
+    case ChainId.INK_SEPOLIA:
+      return process.env.JSON_RPC_PROVIDER_INK_SEPOLIA!
     default:
       throw new Error(`Chain id: ${id} not supported`)
   }
@@ -265,6 +275,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
     18,
     'CELO',
     'Celo native asset'
+  ),
+  [ChainId.INK_SEPOLIA]: new Token(
+    ChainId.INK_SEPOLIA,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WETH',
+    'Wrapped Ether'
   ),
 }
 

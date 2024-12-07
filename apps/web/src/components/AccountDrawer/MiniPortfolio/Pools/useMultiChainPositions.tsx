@@ -39,7 +39,7 @@ type FeeAmounts = [BigNumber, BigNumber]
 
 const MAX_UINT128 = BigNumber.from(2).pow(128).sub(1)
 
-const DEFAULT_CHAINS = [ChainId.CELO]
+const DEFAULT_CHAINS = [ChainId.CELO, ChainId.INK_SEPOLIA]
 
 type UseMultiChainPositionsData = { positions?: PositionInfo[]; loading: boolean }
 

@@ -205,7 +205,10 @@ export class TenderlySimulator extends Simulator {
     if (swapOptions.type == SwapType.UNIVERSAL_ROUTER) {
       // Do initial onboarding approval of Permit2.
       const erc20Interface = Erc20__factory.createInterface()
-      const approvePermit2Calldata = erc20Interface.encodeFunctionData('approve', [PERMIT2_ADDRESS, MaxUint256])
+      const approvePermit2Calldata = erc20Interface.encodeFunctionData('approve', [
+        PERMIT2_ADDRESS(chainId),
+        MaxUint256,
+      ])
 
       // We are unsure if the users calldata contains a permit or not. We just
       // max approve the Univeral Router from Permit2 instead, which will cover both cases.
@@ -232,7 +235,7 @@ export class TenderlySimulator extends Simulator {
         network_id: chainId,
         estimate_gas: true,
         input: approveUniversalRouterCallData,
-        to: PERMIT2_ADDRESS,
+        to: PERMIT2_ADDRESS(chainId),
         value: '0',
         from: fromAddress,
         simulation_type: TenderlySimulationType.QUICK,

@@ -37,6 +37,7 @@ export const DEFAULT_ROUTING_CONFIG_BY_CHAIN = (chainId: ChainId): AlphaRouterCo
     // have to adjust the routing config so we explore fewer routes.
     case ChainId.ARBITRUM_ONE:
     case ChainId.ARBITRUM_GOERLI:
+    case ChainId.INK_SEPOLIA: // TODO for Mo: is it correct to use Arbitrum config for INK?
     case ChainId.CELO:
     case ChainId.CELO_ALFAJORES:
       return {

@@ -1,5 +1,6 @@
 import { CurrencyAmount, Token } from '@ubeswap/sdk-core'
-import { AllowanceTransfer, MaxAllowanceTransferAmount, PERMIT2_ADDRESS, PermitSingle } from '@uniswap/permit2-sdk'
+import { AllowanceTransfer, MaxAllowanceTransferAmount, PermitSingle } from '@uniswap/permit2-sdk'
+import { PERMIT2_ADDRESS } from '@uniswap/universal-router-sdk'
 import { useWeb3React } from '@web3-react/core'
 import { useContract } from 'hooks/useContract'
 import { useSingleCallResult } from 'lib/hooks/multicall'
@@ -20,7 +21,7 @@ function toDeadline(expiration: number): number {
 }
 
 export function usePermitAllowance(token?: Token, owner?: string, spender?: string) {
-  const contract = useContract<Permit2>(PERMIT2_ADDRESS, PERMIT2_ABI)
+  const contract = useContract<Permit2>(PERMIT2_ADDRESS(token?.chainId), PERMIT2_ABI)
   const inputs = useMemo(() => [owner, token?.address, spender], [owner, spender, token?.address])
 
   // If there is no allowance yet, re-check next observed block.
@@ -79,7 +80,7 @@ export function useUpdatePermitAllowance(
             sigDeadline: toDeadline(PERMIT_SIG_EXPIRATION),
           }
 
-          const { domain, types, values } = AllowanceTransfer.getPermitData(permit, PERMIT2_ADDRESS, chainId)
+          const { domain, types, values } = AllowanceTransfer.getPermitData(permit, PERMIT2_ADDRESS(chainId), chainId)
           const signature = await trace.child({ name: 'Sign', op: 'wallet.sign' }, async (walletTrace) => {
             try {
               return await signTypedData(provider.getSigner(account), domain, types, values)

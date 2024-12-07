@@ -18,4 +18,5 @@ export const RPC_PROVIDERS = {
   [ChainId.MAINNET]: getAppProvider(ChainId.MAINNET),
   [ChainId.CELO]: getAppProvider(ChainId.CELO),
   [ChainId.CELO_ALFAJORES]: getAppProvider(ChainId.CELO_ALFAJORES),
+  [ChainId.INK_SEPOLIA]: getAppProvider(ChainId.INK_SEPOLIA),
 } satisfies Record<SupportedInterfaceChain, AppJsonRpcProvider>

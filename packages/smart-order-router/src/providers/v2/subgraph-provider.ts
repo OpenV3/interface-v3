@@ -39,6 +39,8 @@ const SUBGRAPH_URL_BY_CHAIN: { [chainId in ChainId]?: string } = {
   [ChainId.MAINNET]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v2-dev',
   [ChainId.CELO]:
     'https://gateway-arbitrum.network.thegraph.com/api/4271ef6e8196c6631ad397c7be19082a/subgraphs/id/JWDRLCwj4H945xEkbB6eocBSZcYnibqcJPJ8h9davFi',
+  [ChainId.INK_SEPOLIA]:
+    'https://api.goldsky.com/api/public/project_clwg93ryvd0mi01u59udc0ypo/subgraphs/open-v2/1.0.0/gn',
 }
 
 const threshold = 0.025

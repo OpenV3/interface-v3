@@ -8,6 +8,7 @@ export const CHAIN_IDS_TO_NAMES = {
   [ChainId.POLYGON_MUMBAI]: 'polygon_mumbai',
   [ChainId.CELO]: 'celo',
   [ChainId.CELO_ALFAJORES]: 'celo_alfajores',
+  [ChainId.INK_SEPOLIA]: 'ink_sepolia',
   [ChainId.ARBITRUM_ONE]: 'arbitrum',
   [ChainId.ARBITRUM_GOERLI]: 'arbitrum_goerli',
   [ChainId.OPTIMISM]: 'optimism',
@@ -77,6 +78,7 @@ export const TESTNET_CHAIN_IDS = [
   ChainId.ARBITRUM_GOERLI,
   ChainId.OPTIMISM_GOERLI,
   ChainId.CELO_ALFAJORES,
+  ChainId.INK_SEPOLIA,
 ] as const
 
 /**
@@ -118,6 +120,7 @@ export type SupportedL2ChainId = (typeof L2_CHAIN_IDS)[number]
  */
 export function getChainPriority(chainId: ChainId): number {
   switch (chainId) {
+    case ChainId.INK_SEPOLIA:
     case ChainId.CELO:
     case ChainId.CELO_ALFAJORES:
       return 0

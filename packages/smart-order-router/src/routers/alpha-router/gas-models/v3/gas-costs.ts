@@ -7,6 +7,8 @@ import { V3Route } from '../../../router'
 // Cost for crossing an uninitialized tick.
 export const COST_PER_UNINIT_TICK = BigNumber.from(0)
 
+// TODO for Mo: investigate the various gas unit costs on Ink; for now just use the defaults
+
 //l2 execution fee on optimism is roughly the same as mainnet
 export const BASE_SWAP_COST = (id: ChainId): BigNumber => {
   switch (id) {

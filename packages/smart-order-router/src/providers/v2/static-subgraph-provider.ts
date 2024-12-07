@@ -14,6 +14,7 @@ import {
   USDC_MAINNET,
   USDT_MAINNET,
   WBTC_MAINNET,
+  WETH_INK_SEPOLIA,
 } from '../token-provider'
 
 import { IV2SubgraphProvider, V2SubgraphPool } from './subgraph-provider'
@@ -34,6 +35,7 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.POLYGON_MUMBAI]: [],
   [ChainId.CELO]: [CELO, CUSD_CELO, CEUR_CELO],
   [ChainId.CELO_ALFAJORES]: [CELO_ALFAJORES, CUSD_CELO_ALFAJORES],
+  [ChainId.INK_SEPOLIA]: [WETH_INK_SEPOLIA], // TODO: consider adding a USD asset
   [ChainId.GNOSIS]: [],
   [ChainId.MOONBEAM]: [],
   [ChainId.BNB]: [],

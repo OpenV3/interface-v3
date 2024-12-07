@@ -125,7 +125,7 @@ export abstract class Simulator {
     const tokenContract = Erc20__factory.connect(inputAmount.currency.wrapped.address, provider)
 
     if (swapOptions.type == SwapType.UNIVERSAL_ROUTER) {
-      const permit2Allowance = await tokenContract.allowance(fromAddress, PERMIT2_ADDRESS)
+      const permit2Allowance = await tokenContract.allowance(fromAddress, PERMIT2_ADDRESS(this.chainId))
 
       // If a permit has been provided we don't need to check if UR has already been allowed.
       if (swapOptions.inputTokenPermit) {
@@ -139,8 +139,10 @@ export abstract class Simulator {
         return permit2Allowance.gte(BigNumber.from(inputAmount.quotient.toString()))
       }
 
+      this.chainId
+
       // Check UR has been approved from Permit2.
-      const permit2Contract = Permit2__factory.connect(PERMIT2_ADDRESS, provider)
+      const permit2Contract = Permit2__factory.connect(PERMIT2_ADDRESS(this.chainId), provider)
 
       const { amount: universalRouterAllowance, expiration: tokenExpiration } = await permit2Contract.allowance(
         fromAddress,

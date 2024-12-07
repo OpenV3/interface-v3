@@ -1,0 +1,33 @@
+{
+    "name": "Ink Sepolia Token List",
+    "version": {
+        "major": 3,
+        "minor": 5,
+        "patch": 0
+    },
+    "logoURI": "https://docs.inkonchain.com/logo/ink-logo-light.svg",
+    "keywords": [
+        "ink",
+        "tokens",
+        "refi"
+    ],
+    "timestamp": "2024-12-05T20:37:00.000+00:00",
+    "tokens": [
+        {
+            "name": "Wrapped Ether",
+            "address": "0x4200000000000000000000000000000000000006",
+            "symbol": "WETH",
+            "decimals": 18,
+            "chainId": 763373,
+            "logoURI": "https://tokens.1inch.io/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.png"
+        },
+        {
+            "name": "Tether USD",
+            "address": "0x2e0321399D7E50FCbF00c2a8F4e9d91BCbd0Fd25",
+            "symbol": "USDT",
+            "decimals": 18,
+            "chainId": 763373,
+            "logoURI": "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png"
+        }
+    ]
+}
